@@ -1,4 +1,4 @@
-// boxes are positioned at their respective id
+// boxes are indexed by their respective ids
 // box data is of the form:
 //     {alive:bool, position:{x:double,y:double}, size:{width:double, height:double}, title:null/string type_name:string, type_specific_info:{}, inputs:{}/null, outputs:{}/null}
 //     where position/size data is a scale from 0-1, where the value 1 == the drawing window width/height as appropriate

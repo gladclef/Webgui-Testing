@@ -1,5 +1,5 @@
 if (window.guidata == undefined) {
-	// for an example of the data format, see box_json_format.js
+	// for an description of the data format, see box_json_format.js
 	window.guidata = {boxes:[], connections:{}};
 }
 
@@ -10,8 +10,8 @@ create_example_boxes = function() {
 	// create the first box, no connections
 	var box1 = {
     alive: true,
-    position: {0.8, 0.8},
-    size: {0.1, 0.1},
+    position: {x:0.8, y:0.8},
+    size: {width:0.1, height:0.1},
     title: null,
     type_name: "type example 1",
     type_specific_info: {
@@ -39,8 +39,8 @@ create_example_boxes = function() {
 	// create the second box, connects to third box
 	var box2 = {
     alive: true,
-    position: {0.2, 0.2},
-    size: {0.1, 0.1},
+    position: {x:0.2, y:0.2},
+    size: {width:0.1, height:0.1},
     title: null,
     type_name: "type example 2",
     type_specific_info: {
@@ -62,8 +62,8 @@ create_example_boxes = function() {
 	// create the second box, connects to third box
 	var box3 = {
     alive: true,
-    position: {0.6, 0.2},
-    size: {0.1, 0.1},
+    position: {x:0.6, y:0.2},
+    size: {width:0.1, height:0.1},
     title: null,
     type_name: "type example 3",
     type_specific_info: {
