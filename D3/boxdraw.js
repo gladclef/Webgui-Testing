@@ -1,3 +1,7 @@
+/**
+ * All the drawing functions (does not include canvas creation functions)
+ */
+
 if (window.webgui == undefined) {
   webgui = {};
 }
@@ -8,6 +12,7 @@ if (webgui.guidata == undefined) {
 }
 
 if (webgui.draw == undefined) {
+  // create the basic drawing collection and template
   webgui.draw = {
     _funcs: {},
     _add: function(name, callback) {
@@ -24,16 +29,19 @@ if (webgui.draw == undefined) {
 }
 
 webgui.draw._add("boxes", function() {
-  d3.select("#webgui_canvas").selectAll(".box").data(webgui.guidata.boxes).enter()
+  "use strict";
+  var retval = webgui.box_canvas().selectAll(".box").data(webgui.guidata.boxes).enter()
     .append("div")
     .classed("box", true)
     .text("hello");
+  return retval;
 });
 
 webgui.draw._add("connections", function() {
-
+  "use strict";
 });
 
 webgui.draw._add("sidebar", function() {
+  "use strict";
 
 });
