@@ -1,11 +1,15 @@
-if (window.guidata == undefined) {
-	// for an description of the data format, see box_json_format.js
-	window.guidata = {boxes:[], connections:{}};
+if (window.webgui == undefined) {
+  webgui = {};
 }
 
-create_example_boxes = function() {
+if (webgui.guidata == undefined) {
+	// for an description of the data format, see box_json_format.js
+	webgui.guidata = {boxes:[], connections:{}};
+}
+
+webgui.create_example_boxes = function() {
 	// get the first unused box id
-	var box_id = boxes.length;
+	var box_id = webgui.guidata.boxes.length;
 
 	// create the first box, no connections
 	var box1 = {
@@ -34,7 +38,7 @@ create_example_boxes = function() {
       out1: "double"
     }
   };
-  window.guidata.boxes[box_id] = box1;
+  webgui.guidata.boxes[box_id] = box1;
 
 	// create the second box, connects to third box
 	var box2 = {
@@ -57,7 +61,7 @@ create_example_boxes = function() {
     }
   };
   box_id++;
-  window.guidata.boxes[box_id] = box2;
+  webgui.guidata.boxes[box_id] = box2;
 
 	// create the second box, connects to third box
 	var box3 = {
@@ -80,13 +84,14 @@ create_example_boxes = function() {
     outputs: null
   };
   box_id++;
-  window.guidata.boxes[box_id] = box3;
+  webgui.guidata.boxes[box_id] = box3;
 
 	// create the connection between boxes 2 and 3
-	var connection = {
+	var conn = {
 		from: box_id - 1,
 		output_location: "out1",
 		to: box_id,
 		input_location: "in1"
 	}
+  webgui.guidata.connections[conn.from + "_" + conn.to] = conn;
 }
