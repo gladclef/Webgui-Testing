@@ -8,28 +8,10 @@ if (window.webgui == undefined) {
 }
 webgui.files_loaded++;
 
-if (webgui.guidata == undefined) {
-  webgui.guidata = {
-    boxes:[],
-    connections:[],
-    add_box: function(box) {
-      box.id = webgui.guidata.boxes.length;
-      box.needs_update = {internals:true, decorators:true}
-      webgui.guidata.boxes[webgui.guidata.boxes.length] = box;
-    },
-    live_boxes: function() {
-      return webgui.guidata.boxes.filter( function(k,v) { return v.alive; } );
-    },
-    dead_boxes: function() {
-      return webgui.guidata.boxes.filter( function(k,v) { return !v.alive; } );
-    }
-  }
-}
-
 $(function() {
   var init, other;
   init = function() {
-    if (webgui.files_loaded < 3) {
+    if (webgui.files_loaded < 4) {
       setTimeout(other, 10);
     } else {
       webgui.create_example_boxes();
