@@ -31,16 +31,36 @@ if (webgui.draw == undefined) {
 
 webgui.draw._add("boxes", function() {
   "use strict";
+
+  // dimensions to be used to create the box
   var w = webgui.box_canvas_width();
   var h = webgui.box_canvas_height();
-  var retval = webgui.box_canvas().selectAll(".box").data(webgui.guidata.boxes).enter()
+
+  // create the box
+  var box = webgui.box_canvas().selectAll(".box").data(webgui.guidata.boxes).enter()
     .append("div")
-    .classed("box", true)
+    .classed({box:true})
+    .attr("box_id", function(d, i) { return i; })
     .style("top", function(d) { return h * d.position.y + "px" })
     .style("left", function(d) { return w * d.position.x + "px"})
     .style("width", function(d) { return w * d.size.width + "px"})
     .style("height", function(d) { return h * d.size.height + "px"});
-  return retval;
+
+  // add internals to the box
+  webgui.draw.box_internals();
+
+  // decorate the box
+  webgui.draw.box_decorations();
+
+  return box;
+});
+
+webgui.draw._add("box_internals", function() {
+
+});
+
+webgui.draw._add("box_decorations", function() {
+
 });
 
 webgui.draw._add("connections", function() {
