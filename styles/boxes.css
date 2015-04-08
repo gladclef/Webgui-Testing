@@ -7,12 +7,22 @@
     position: absolute;
     border: 1px solid black;
     background-color: #eee; }
+    #webgui_canvas .box_canvas .box .internals {
+      display: block; }
     #webgui_canvas .box_canvas .box .title {
       width: 100%;
-      height: 24px;
-      font-size: 18px;
       text-align: center;
       vertical-align: middle;
-      text-decoration: italic; }
+      font-style: italic;
+      background-color: rgba(0, 0, 0, 0.3); }
+    #webgui_canvas .box_canvas .box .property {
+      width: 90%;
+      text-align: left;
+      vertical-align: middle;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.5); }
+    #webgui_canvas .box_canvas .box .decorators {
+      position: absolute;
+      border: 1px solid black;
+      background-color: rgba(0, 0, 0, 0.5); }
 
 /*# sourceMappingURL=boxes.css.map */
