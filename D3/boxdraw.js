@@ -173,11 +173,11 @@ webgui.draw._add("box_decorations", function() {
   var boxes = webgui.box_canvas().selectAll(".box").data(update_boxes);
 
   // draw the inputs/outputs
-  var draw_decorators = function(selector, classes, top) {
-    boxes.selectAll(selector).data(get_inputs).exit().remove();
-    boxes.selectAll(selector).data(get_inputs).enter()
+  var draw_decorators = function(selector, data, top) {
+    boxes.selectAll("." + selector).data(data).exit().remove();
+    boxes.selectAll("." + selector).data(data).enter()
       .append("div")
-      .classed(classes)
+      .classed({selector:true, decorators:true})
       .style({
         width: (decorator_width + "px"),
         height: (decorator_width + "px")
@@ -186,12 +186,12 @@ webgui.draw._add("box_decorations", function() {
       .style("left", get_left);
     };
   draw_decorators(
-    ".input",
-    {input:true, decorators:true},
+    "input",
+    get_inputs,
     (-decorator_width/2 + "px"));
   draw_decorators(
-    ".output",
-    {output:true, decorators:true},
+    "output",
+    get_outputs,
     get_top);
 });
 
