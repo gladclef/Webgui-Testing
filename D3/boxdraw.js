@@ -31,10 +31,15 @@ if (webgui.draw == undefined) {
 
 webgui.draw._add("boxes", function() {
   "use strict";
+  var w = webgui.box_canvas_width();
+  var h = webgui.box_canvas_height();
   var retval = webgui.box_canvas().selectAll(".box").data(webgui.guidata.boxes).enter()
     .append("div")
     .classed("box", true)
-    .text("hello");
+    .style("top", function(d) { return h * d.position.y + "px" })
+    .style("left", function(d) { return w * d.position.x + "px"})
+    .style("width", function(d) { return w * d.size.width + "px"})
+    .style("height", function(d) { return h * d.size.height + "px"});
   return retval;
 });
 

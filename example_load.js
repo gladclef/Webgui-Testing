@@ -15,8 +15,8 @@ webgui.create_example_boxes = function() {
 	// create the first box, no connections
 	var box1 = {
     alive: true,
-    position: {x:0.8, y:0.8},
-    size: {width:0.1, height:0.1},
+    position: {x:0.8, y:0.7},
+    size: {width:0.1, height:0.2},
     title: null,
     type_name: "type example 1",
     type_specific_info: {
@@ -45,7 +45,7 @@ webgui.create_example_boxes = function() {
 	var box2 = {
     alive: true,
     position: {x:0.2, y:0.2},
-    size: {width:0.1, height:0.1},
+    size: {width:0.1, height:0.2},
     title: null,
     type_name: "type example 2",
     type_specific_info: {
@@ -68,7 +68,7 @@ webgui.create_example_boxes = function() {
 	var box3 = {
     alive: true,
     position: {x:0.6, y:0.2},
-    size: {width:0.1, height:0.1},
+    size: {width:0.1, height:0.2},
     title: null,
     type_name: "type example 3",
     type_specific_info: {

@@ -86,6 +86,12 @@ webgui.height = function() {
 webgui.sidebar_width = function() {
   return $(webgui.sidebar()[0]).width();
 };
+webgui.sidebar_height = function() {
+  return $(webgui.sidebar()[0]).height();
+};
 webgui.box_canvas_width = function() {
   return $(webgui.box_canvas()[0]).width();
+};
+webgui.box_canvas_height = function() {
+  return $(webgui.box_canvas()[0]).height();
 };
