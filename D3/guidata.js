@@ -14,9 +14,9 @@ webgui.guidata.add_box = function(box) {
 };
 
 webgui.guidata.live_boxes = function() {
-  return webgui.guidata.boxes.filter( function(k,v) { return v.alive; } );
+  return webgui.guidata.boxes.filter( function(v,k) { return v.alive; } );
 };
 
 webgui.guidata.dead_boxes = function() {
-  return webgui.guidata.boxes.filter( function(k,v) { return !v.alive; } );
+  return webgui.guidata.boxes.filter( function(v,k) { return !v.alive; } );
 };

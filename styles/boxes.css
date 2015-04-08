@@ -1,12 +1,18 @@
-.box_canvas {
+#webgui_canvas .box_canvas {
   position: absolute;
   top: 0px;
   left: 0px;
   border: 1px solid black; }
-
-.box_canvas .box {
-  position: absolute;
-  border: 1px solid black;
-  background-color: #eee; }
+  #webgui_canvas .box_canvas .box {
+    position: absolute;
+    border: 1px solid black;
+    background-color: #eee; }
+    #webgui_canvas .box_canvas .box .title {
+      width: 100%;
+      height: 40px;
+      font-size: 30px;
+      text-align: center;
+      vertical-align: middle;
+      text-decoration: italic; }
 
 /*# sourceMappingURL=boxes.css.map */
