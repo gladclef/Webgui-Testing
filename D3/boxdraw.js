@@ -159,7 +159,7 @@ webgui.draw._add("box_decorations", function() {
     return (offset + "px");
   };
   var get_top = function(d) {
-    var top = d.box_size.pixel_height + decorator_width / 2;
+    var top = d.box_size.pixel_height - decorator_width / 2;
     return (top + "px");
   };
   var decorator_width = webgui.draw.decorator_width();
@@ -172,16 +172,27 @@ webgui.draw._add("box_decorations", function() {
   var update_boxes = webgui.guidata.live_boxes().filter(needs_update);
   var boxes = webgui.box_canvas().selectAll(".box").data(update_boxes);
 
-  boxes.selectAll(".input").data(get_inputs).exit().remove();
-  boxes.selectAll(".input").data(get_inputs).enter()
-    .append("div")
-    .classed({input:true, decorators:true})
-    .style({
-      width: (decorator_width + "px"),
-      height: (decorator_width + "px"),
-      top: (-decorator_width/2 + "px")
-    })
-    .style("left", get_left);
+  // draw the inputs/outputs
+  var draw_decorators = function(selector, classes, top) {
+    boxes.selectAll(selector).data(get_inputs).exit().remove();
+    boxes.selectAll(selector).data(get_inputs).enter()
+      .append("div")
+      .classed(classes)
+      .style({
+        width: (decorator_width + "px"),
+        height: (decorator_width + "px")
+      })
+      .style("top", top)
+      .style("left", get_left);
+    };
+  draw_decorators(
+    ".input",
+    {input:true, decorators:true},
+    (-decorator_width/2 + "px"));
+  draw_decorators(
+    ".output",
+    {output:true, decorators:true},
+    get_top);
 });
 
 webgui.draw._add("connections", function() {
