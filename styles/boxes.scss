@@ -10,13 +10,27 @@
       border: 1px solid black;
       background-color: #eee;
 
-      .title {
-        width: 100%;
-        height: 24px;
-        font-size: 18px;
-        text-align: center;
-        vertical-align: middle;
-        text-decoration: italic;
+      div {
+        display: inline-block;
+
+        .title {
+          width: 100%;
+          height: 24px;
+          font-size: 18px;
+          text-align: center;
+          vertical-align: middle;
+          font-style: italic;
+          background-color: rgba(0,0,0,0.3);
+        }
+
+        .property {
+          width: 100%;
+          height: 18px;
+          font-size: 12px;
+          text-align: left;
+          vertical-align: middle;
+          border-bottom: 1 px solid rgba(0,0,0,0.5);
+        }
       }
     }
   }

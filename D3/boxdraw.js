@@ -58,24 +58,43 @@ webgui.draw._add("boxes", function() {
 webgui.draw._add("box_internals", function() {
   var get_title = function(d) {
     var title = d.title == null ? d.type_name : d.title;
-    console.log(d);
-    console.log(title);
     return [title];
   };
+  var get_title_data = function(d) {
+    return [{title:d.title, type_name:d.type_name}];
+  };
+  var get_props_data = function(d) {
+    var retval = [];
+    var add_to_retval = function(k,v) {
+      var prop = v;
+      prop.title = k;
+      retval[retval.length] = prop;
+    };
+    $.each(d.type_specific_info.properties, add_to_retval);
+    console.log(retval);
+    return retval;
+  };
+  var get_prop_title = function(d) {
+    return d.title;
+  };
+
   var needs_update = function(d) {
     var do_update = d.needs_update.internals;
     return do_update;
   };
-  var get_data = function(d) {
-    return [d];
-  };
   var update_boxes = webgui.guidata.live_boxes().filter(needs_update);
 
   var boxes = webgui.box_canvas().selectAll(".box").data(update_boxes);
-  boxes.selectAll(".title").data(get_data).enter()
+  boxes.selectAll(".title").data(get_title_data).exit().remove();
+  boxes.selectAll(".title").data(get_title_data).enter()
     .append("div")
     .classed({title:true})
     .text(get_title);
+  boxes.selectAll(".property").data(get_props_data).exit().remove();
+  boxes.selectAll(".property").data(get_props_data).enter()
+    .append("div")
+    .classed({property:true})
+    .text(get_prop_title);
 });
 
 webgui.draw._add("box_decorations", function() {
