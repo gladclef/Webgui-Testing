@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,cAAe;EACb,QAAQ,EAAE,QAAQ;EAClB,KAAK,EAAE,MAAM;EACb,MAAM,EAAE,KAAK",
+"mappings": "AAAA,cAAe;EACb,QAAQ,EAAE,QAAQ",
 "sources": ["webgui.scss"],
 "names": [],
 "file": "webgui.css"

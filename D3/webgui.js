@@ -12,11 +12,28 @@ if (window.webgui == undefined) {
  ******************************************************************************/
 
 webgui.canvas = function() {
-  return d3.select("#webgui_canvas");
+  "use strict";
+  var vdiff = 20; // account for scrollbar width
+  var wdiff = 20; // account for scrollbar height
+  var selection = d3.select("#webgui_canvas").selectAll(".inner_webgui_canvas");
+  if (!selection.empty()) {
+    return selection;
+  }
+  return selection.data([0]).enter()
+    .append("div")
+    .classed("inner_webgui_canvas", true)
+    .style({
+      width: ($(document).width() - wdiff + "px"),
+      height: ($(document).height() - vdiff + "px")
+    });
 };
 webgui.sidebar = function() {
   "use strict";
-  return webgui.canvas().select(".sidebar").data([0]).enter()
+  var selection = webgui.canvas().selectAll(".sidebar");
+  if (!selection.empty()) {
+    return selection;
+  }
+  return selection.data([0]).enter()
     .append("div")
     .classed("sidebar", true)
     .style({
@@ -26,7 +43,11 @@ webgui.sidebar = function() {
 };
 webgui.box_canvas = function() {
   "use strict";
-  return webgui.canvas().select(".box_canvas").data([0]).enter()
+  var selection = webgui.canvas().selectAll(".box_canvas");
+  if (!selection.empty()) {
+    return selection;
+  }
+  return selection.data([0]).enter()
     .append("div")
     .classed("box_canvas", true)
     .style({
@@ -40,8 +61,14 @@ webgui.box_canvas = function() {
  ******************************************************************************/
 
 webgui.width = function() {
-  return $(webgui.canvas[0]).width();
+  return $(webgui.canvas()[0]).width();
 };
 webgui.height = function() {
-  return $(webgui.canvas[0]).height();
+  return $(webgui.canvas()[0]).height();
+};
+webgui.sidebar_width = function() {
+  return $(webgui.sidebar()[0]).width();
+};
+webgui.box_canvas_width = function() {
+  return $(webgui.box_canvas()[0]).width();
 };
