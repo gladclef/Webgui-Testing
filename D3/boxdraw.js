@@ -3,8 +3,9 @@
  */
 
 if (window.webgui == undefined) {
-  webgui = {};
+  webgui = {files_loaded:0};
 }
+webgui.files_loaded++;
 
 if (webgui.guidata == undefined) {
   // for an description of the data format, see box_json_format.js

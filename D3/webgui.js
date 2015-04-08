@@ -4,8 +4,25 @@
  */
 
 if (window.webgui == undefined) {
-  webgui = {};
+  webgui = {files_loaded:0};
 }
+webgui.files_loaded++;
+
+$(function() {
+  var init, other;
+  init = function() {
+    if (webgui.files_loaded < 3) {
+      setTimeout(other, 10);
+    } else {
+      webgui.create_example_boxes();
+      webgui.draw.all();
+    }
+  };
+  other = function() {
+    init();
+  };
+  init();
+}());
 
 /*******************************************************************************
  ******************************* O B J E C T S *********************************

@@ -4,4 +4,9 @@
   left: 0px;
   border: 1px solid black; }
 
+.box_canvas .box {
+  position: absolute;
+  border: 1px solid black;
+  background-color: #eee; }
+
 /*# sourceMappingURL=boxes.css.map */
