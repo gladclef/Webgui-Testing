@@ -7,11 +7,6 @@ if (window.webgui == undefined) {
 }
 webgui.files_loaded++;
 
-if (webgui.guidata == undefined) {
-  // for an description of the data format, see box_json_format.js
-  webgui.guidata = {boxes:[], connections:{}};
-}
-
 if (webgui.draw == undefined) {
   // create the basic drawing collection and template
   webgui.draw = {
@@ -180,6 +175,7 @@ webgui.draw._add("box_decorations", function() {
     boxes.selectAll("." + selector).data(data).enter()
       .append("div")
       .classed({selector:true, decorators:true})
+      .attr("title", function(d) { return d.title; })
       .style({
         width: (decorator_width + "px"),
         height: (decorator_width + "px")
@@ -208,6 +204,46 @@ webgui.draw._add("get_cumulative_offset", function(element) {
 
 webgui.draw._add("connections", function() {
   "use strict";
+
+  // functions used to get position of the line, where "d" is the connection
+  var boxes = $(webgui.box_canvas()[0][0]);
+  var get_decorator_position = function(box_id, decorator_title) {
+    var box = boxes.children("[box_id='" + box_id + "']");
+    var decorator = box.find("[title='" + decorator_title + "']");
+    var offset = webgui.draw.get_cumulative_offset(decorator);
+    var retval = offset;
+    retval.x += $(decorator).width() / 2;
+    retval.y += $(decorator).height() / 2;
+    return retval;
+  };
+  var get_x1 = function(d) {
+    return get_decorator_position(d.from, d.output_location).x;
+  };
+  var get_x2 = function(d) {
+    return get_decorator_position(d.to, d.input_location).x;
+  };
+  var get_y1 = function(d) {
+    return get_decorator_position(d.from, d.output_location).y;
+  };
+  var get_y2 = function(d) {
+    return get_decorator_position(d.to, d.input_location).y;
+  };
+
+  // get the connections to be created
+  var conns = webgui.box_canvas().select("svg").selectAll(".connection")
+    .data(webgui.guidata.all_connections);
+
+  // remove old connections
+  conns.exit().remove();
+
+  // create new connections
+  conns.enter()
+    .append("line")
+    .classed({connection:true})
+    .attr("x1", get_x1)
+    .attr("y1", get_y1)
+    .attr("x2", get_x2)
+    .attr("y2", get_y2);
 });
 
 webgui.draw._add("sidebar", function() {

@@ -85,5 +85,5 @@ webgui.create_example_boxes = function() {
 		to: box3.id,
 		input_location: "in1"
 	}
-  webgui.guidata.connections[conn.from + "_" + conn.to] = conn;
+  webgui.guidata.add_connection(conn);
 }

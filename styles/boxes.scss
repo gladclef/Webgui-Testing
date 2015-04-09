@@ -9,6 +9,11 @@
       position: absolute;
       left: 0;
       top: 0;
+
+      .connection {
+        stroke-width: 2;
+        stroke: black;
+      }
     }
 
     .box {

@@ -3,6 +3,13 @@
   top: 0px;
   left: 0px;
   border: 1px solid black; }
+  #webgui_canvas .box_canvas .svg_canvas {
+    position: absolute;
+    left: 0;
+    top: 0; }
+    #webgui_canvas .box_canvas .svg_canvas .connection {
+      stroke-width: 2;
+      stroke: black; }
   #webgui_canvas .box_canvas .box {
     position: absolute;
     border: 1px solid black;
