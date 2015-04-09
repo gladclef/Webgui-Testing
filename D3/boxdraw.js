@@ -216,17 +216,16 @@ webgui.draw._add("connections", function() {
     retval.y += $(decorator).height() / 2;
     return retval;
   };
-  var get_x1 = function(d) {
-    return get_decorator_position(d.from, d.output_location).x;
+  var get_from_point = function(d) {
+    return get_decorator_position(d.from, d.output_location);
   };
-  var get_x2 = function(d) {
-    return get_decorator_position(d.to, d.input_location).x;
+  var get_to_point = function(d) {
+    return get_decorator_position(d.to, d.input_location);
   };
-  var get_y1 = function(d) {
-    return get_decorator_position(d.from, d.output_location).y;
-  };
-  var get_y2 = function(d) {
-    return get_decorator_position(d.to, d.input_location).y;
+  var get_path_curve = function(d) {
+    return webgui.svg.smooth_curve_command(
+      get_from_point(d),
+      get_to_point(d));
   };
 
   // get the connections to be created
@@ -238,12 +237,9 @@ webgui.draw._add("connections", function() {
 
   // create new connections
   conns.enter()
-    .append("line")
+    .append("path")
     .classed({connection:true})
-    .attr("x1", get_x1)
-    .attr("y1", get_y1)
-    .attr("x2", get_x2)
-    .attr("y2", get_y2);
+    .attr("d", get_path_curve);
 });
 
 webgui.draw._add("sidebar", function() {

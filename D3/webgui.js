@@ -11,7 +11,7 @@ webgui.files_loaded++;
 $(function() {
   var init, other;
   init = function() {
-    if (webgui.files_loaded < 4) {
+    if (webgui.files_loaded < 5) {
       setTimeout(other, 10);
     } else {
       webgui.create_example_boxes();

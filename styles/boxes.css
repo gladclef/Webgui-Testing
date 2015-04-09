@@ -9,7 +9,8 @@
     top: 0; }
     #webgui_canvas .box_canvas .svg_canvas .connection {
       stroke-width: 2;
-      stroke: black; }
+      stroke: black;
+      fill: none; }
   #webgui_canvas .box_canvas .box {
     position: absolute;
     border: 1px solid black;
