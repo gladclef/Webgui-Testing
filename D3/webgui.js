@@ -64,13 +64,18 @@ webgui.box_canvas = function() {
   if (!selection.empty()) {
     return selection;
   }
-  return selection.data([0]).enter()
+  var retval = selection.data([0]).enter()
     .append("div")
     .classed("box_canvas", true)
     .style({
       width: (webgui.width() - $(webgui.sidebar()[0]).width() + "px"),
       height: (webgui.height() + "px")
     });
+  retval.append("svg")
+    .attr("width", webgui.box_canvas_width() + "px")
+    .attr("height", webgui.box_canvas_height() + "px")
+    .classed("svg_canvas", true);
+  return retval;
 };
 
 /*******************************************************************************

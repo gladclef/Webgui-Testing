@@ -16,8 +16,10 @@ if (webgui.draw == undefined) {
   // create the basic drawing collection and template
   webgui.draw = {
     _funcs: {},
-    _add: function(name, callback) {
-      webgui.draw._funcs[name] = callback;
+    _add: function(name, callback, call_for_all) {
+      if (call_for_all || arguments.length < 3) {
+        webgui.draw._funcs[name] = callback;
+      }
       webgui.draw[name] = callback;
     },
     all: function() {
@@ -195,11 +197,19 @@ webgui.draw._add("box_decorations", function() {
     get_top);
 });
 
+webgui.draw._add("get_cumulative_offset", function(element) {
+  "use strict";
+  var jelement = $(element);
+  return {
+    x: jelement.offset().left - $(webgui.box_canvas()[0]).offset().left,
+    y: jelement.offset().top - $(webgui.box_canvas()[0]).offset().top,
+  };
+}, false);
+
 webgui.draw._add("connections", function() {
   "use strict";
 });
 
 webgui.draw._add("sidebar", function() {
   "use strict";
-
 });
