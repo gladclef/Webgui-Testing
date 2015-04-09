@@ -8,7 +8,7 @@ webgui.create_example_boxes = function() {
 	// create the first box, no connections
 	var box1 = {
     alive: true,
-    position: {x:0.8, y:0.7},
+    position: {x:0.4, y:0.7},
     size: {width:0.1, height:0.2},
     title: null,
     type_name: "type example 1",
@@ -82,8 +82,8 @@ webgui.create_example_boxes = function() {
 	var conn = {
 		from: box2.id,
 		output_location: "out1",
-		to: box3.id,
-		input_location: "in1"
+		to: box1.id,
+		input_location: "in2"
 	}
   webgui.guidata.add_connection(conn);
 }
